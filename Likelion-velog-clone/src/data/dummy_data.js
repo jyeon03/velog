@@ -6,6 +6,9 @@ export let dummyData = [
     thumbnail:
       "https://www.brandb.net/_next/image?url=https%3A%2F%2Fapi.brandb.net%2Fapi%2Fv2%2Fcommon%2Fimage%3FfileId%3D3011&w=1920&q=75",
     createdAt: "2024-07-12 01:02:03",
+    nickname: "라이언",
+    commentCount: 5,
+    likeCount: 12,
   },
   {
     postID: 2,
@@ -14,6 +17,9 @@ export let dummyData = [
     thumbnail:
       "https://velog.velcdn.com/images/cjjss11/post/2fb8cb61-b354-4de2-b390-95a181e18250/image.png",
     createdAt: "2024-07-13 01:02:03",
+    nickname: "코드사자",
+    commentCount: 2,
+    likeCount: 7,
   },
   {
     postID: 3,
@@ -23,5 +29,8 @@ export let dummyData = [
     thumbnail:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE1HbD-b5JWFx5BVUXdR2jMbAH12lwyVwHWA&s",
     createdAt: "2024-07-14 01:02:03",
+    nickname: "프론트캣",
+    commentCount: 8,
+    likeCount: 21,
   },
 ];
