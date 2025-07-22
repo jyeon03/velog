@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import profileImg from "/src/assets/profile.png";
 import like from "/src/assets/like.png";
+import { useNavigate } from "react-router-dom";
 
 function formatDate(dateString) {
   const date = new Date(dateString.replace(/-/g, "/"));
@@ -14,9 +14,14 @@ function formatDate(dateString) {
 const CardListWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 1280px;
+  margin: 0 auto;
   gap: 20px;
   padding: 40px 0;
   justify-items: center;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Card = styled.div`
@@ -30,6 +35,7 @@ const Card = styled.div`
   flex-direction: column;
   transition: box-shadow 0.2s;
   height: 480px;
+  cursor: pointer;
   &:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
   }
@@ -147,11 +153,12 @@ const LikeCount = styled.span`
 `;
 
 const CardList = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <CardListWrapper>
       {data.map((item) => (
-        <Card key={item.postID}>
-          <Thumbnail src={item.thumbnail} alt={item.title} />
+        <Card key={item.id} onClick={() => navigate(`/post/${item.id}`)}>
+          <Thumbnail src={item.thumbnailUrl} alt={item.title} />
           <Info>
             <Title>{item.title}</Title>
             <Content>{item.content}</Content>
@@ -162,13 +169,13 @@ const CardList = ({ data }) => {
             <Divider />
             <ProfileRow>
               <ProfileDiv>
-                <ProfileImg src={profileImg} alt="profile" />
+                <ProfileImg src={item.writerProfileUrl} alt="profile" />
                 <NameTag>by</NameTag>
-                <Nickname>{item.nickname}</Nickname>
+                <Nickname>{item.writerName}</Nickname>
               </ProfileDiv>
               <LikeDiv>
                 <img src={like} alt="like-image" width={20} height={20} />
-                <LikeCount>{item.likeCount}</LikeCount>
+                <LikeCount>{item.heartCount}</LikeCount>
               </LikeDiv>
             </ProfileRow>
           </Info>
